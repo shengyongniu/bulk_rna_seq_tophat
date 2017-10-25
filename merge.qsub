@@ -1,0 +1,8 @@
+
+INFILE=`find /restricted/projectnb/chengcancer/Simon/project/T2D/bulk_RNA-seq/170506_NB501164/0raw/fastq_files/*_R1_001.fastq.gz | sed 's/_R1_001.fastq.gz$//'| head -${SGE_TASK_ID} |tail -1`
+INFILE2="/restricted/projectnb/chengcancer/Simon/project/T2D/bulk_RNA-seq/170415_NB501164/0raw/fastq_files/$(basename $INFILE)"
+echo "NOW in TASK ${SGE_TASK_ID} : PROCESSING $INFILE ..."
+
+cat   ${INFILE}_R1_001.fastq.gz   ${INFILE2}_R1_001.fastq.gz  >  $(basename $INFILE)_170415_NB501164_170506_NB501164_R1_001.fastq.gz 
+cat   ${INFILE}_R2_001.fastq.gz   ${INFILE2}_R2_001.fastq.gz  >  $(basename $INFILE)_170415_NB501164_170506_NB501164_R2_001.fastq.gz
+
