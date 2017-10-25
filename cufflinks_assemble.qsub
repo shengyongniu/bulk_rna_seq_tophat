@@ -1,0 +1,28 @@
+#!/bin/bash -l
+
+# we are going to set these paramenters through cmdline (but you can always hardcoded the parameters if they are going to be fixed.:
+
+
+# Now let's keep track of some information just in case anything goes wrong
+echo "=========================================================="
+echo "Starting on : $(date)"
+echo "Running on node : $(hostname)"
+echo "Current directory : $(pwd)"
+echo "Current job ID : $JOB_ID"
+echo "Current job name : $JOB_NAME"
+echo "Task index number : $SGE_TASK_ID"
+echo "=========================================================="
+
+
+module load boost/boost_1_51_0_gnu446
+module load cufflinks/2.2.1
+
+INFILE=`find /restricted/projectnb/chengcancer/Simon/project/T2D/bulk_RNA-seq/merge_170415_NB501164_170506_NB501164/2mapping  -name "accepted_hits.bam" | head -${SGE_TASK_ID} |tail -1`
+OUTFILE=`dirname $INFILE | sed 's/_thout/_clout/'`
+echo "NOW in TASK ${SGE_TASK_ID} : PROCESSING $INFILE ..."
+echo "OUTFILE: $OUTFILE"
+
+# call macs2 for individual file distributed by task id
+
+cufflinks -p 4 -o ${OUTFILE}  ${INFILE}
+
