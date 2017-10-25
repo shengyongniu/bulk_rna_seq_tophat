@@ -55,7 +55,9 @@ A bioinformatic analysis pipeline for bulk RNA-seq
 - Description:
   - Run Cuffdiff by using the merged transcriptome assembly along with the BAM files from TopHat for each replicate in various samples
 
-9. DESeq2
+9. CummeRbund
+- Files:
+  - above CuffDiff.R scripts
 - Description:
-  - Use DESeq2 to understand differential expression genes
+  - Use CummeRbund to understand differential expression genes
 
