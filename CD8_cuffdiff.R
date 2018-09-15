@@ -1,4 +1,4 @@
-setwd("/restricted/projectnb/chengcancer/Simon/project/T2D//bulk_RNA-seq//merge_170415_NB501164_170506_NB501164//2mapping")
+setwd(".//2mapping")
 library(cummeRbund)
 cuff_data <- readCufflinks('CD8_diff_out/')
 cuff_data
